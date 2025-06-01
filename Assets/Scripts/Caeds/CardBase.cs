@@ -45,6 +45,9 @@ public enum CardType
     Defense,
     Heal,
     exception,
+    poison,
+    Compensation,
+    reflector,
 }
 
 public enum SynthesisType

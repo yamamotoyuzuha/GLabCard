@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattlerHand : MonoBehaviour
@@ -15,6 +16,9 @@ public class BattlerHand : MonoBehaviour
     {
         list.Add(card);
         card.transform.SetParent(this.transform);
+
+        //代償カードが出せない場合、カードの彩度を下げる　できればここに処理を追加
+        
     }
 
     //カードをリストから削除

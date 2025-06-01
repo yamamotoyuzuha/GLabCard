@@ -15,6 +15,7 @@ public class Battler : MonoBehaviour
     [Header("実数値")]
     [SerializeField] int life;
     [SerializeField] int defens;
+    [SerializeField] int compensation; //代償で引かれる数値
 
 
     public UnityAction OnSubmitAction;
@@ -25,6 +26,8 @@ public class Battler : MonoBehaviour
 
     public int Defens { get => defens; set => defens = value; }
     public int Life { get => life; set => life = value; }
+
+    public int Compensation { get => compensation; }
 
     public BattlerHand Hand { get => hand; }
     public SubmitPosition SubmitPosition { get => submitPosition; }
@@ -50,6 +53,13 @@ public class Battler : MonoBehaviour
     {
         if (IsSubmitted)
             return;
+
+        //プレイヤーのHPが代償を受ける値より小さかったら処理を行わない
+        if(card.Base.CardName == "Compensation" && life < compensation)
+        {
+            Debug.Log("代償カードは出せないよ");
+            return;
+        }
 
         if (card.transform.parent == submitPosition.transform)
         {
