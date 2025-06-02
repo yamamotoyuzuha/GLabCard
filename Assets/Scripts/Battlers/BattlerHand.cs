@@ -18,7 +18,6 @@ public class BattlerHand : MonoBehaviour
         card.transform.SetParent(this.transform);
 
         //代償カードが出せない場合、カードの彩度を下げる　できればここに処理を追加
-        
     }
 
     //カードをリストから削除

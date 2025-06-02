@@ -23,6 +23,7 @@ public class CardBase : ScriptableObject
     [SerializeField] UniqueEffect uniqueEffect;
     [SerializeField] List<FlontBuff> flontBuff = new List<FlontBuff>();
 
+    [SerializeField] float compensationMagnification; //代償カードの倍率
 
     public CardType Type { get => type; set => type = value; }
     public int ID { get => id; set => id = value; }
@@ -36,7 +37,10 @@ public class CardBase : ScriptableObject
     public UniqueEffect UniqueEffect { get => uniqueEffect; set => uniqueEffect = value; }
     public List<FlontBuff> FlontBuff { get => flontBuff; set => flontBuff = value; }
     public CardStatus CardStatus { get => cardStatus; set => cardStatus = value; }
-    
+
+    public float ComMagnification { get => compensationMagnification; }
+
+
 }
 
 public enum CardType

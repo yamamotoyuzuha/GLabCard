@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95f359ba17d92a642aa2d30fdfb5f2af, type: 3}
-  m_Name: 105_Compensation
+  m_Name: 107_Compensation
   m_EditorClassIdentifier: 
   displayName: "\u4EE3\u511F"
   cardName: Compensation
   synthesisType: 0
   type: 5
-  id: 105
+  id: 107
   icon: {fileID: 0}
-  color: {r: 1, g: 1, b: 1, a: 0}
-  description: "\u4EE3\u511F"
+  color: {r: 1, g: 1, b: 1, a: 1}
+  description: "HP\u304C\u6E1B\u308B"
   cardStatus:
-    attack_Status: 30
+    attack_Status: 20
     magic_Status: 0
     defense_Status: 0
     heal_Status: 0
@@ -35,3 +35,12 @@ MonoBehaviour:
     flontCard: Shield
   - buff: 1.5
     flontCard: Potion
+  - buff: 1.5
+    flontCard: Sword_Plus
+  - buff: 1.5
+    flontCard: Magic_Plus
+  - buff: 1.5
+    flontCard: Shield_Plus
+  - buff: 1.5
+    flontCard: Potion_Plus
+  compensationMagnification: 1.5
