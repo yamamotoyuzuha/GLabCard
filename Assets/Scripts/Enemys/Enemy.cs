@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Text CountText;
     public EnemyBase Base { get; private set; }
     public EnemyBase Status { get; private set; }
+    
     public Text DescriotionText { get => descriotionText; set => descriotionText = value; }
     public Text CountText1 { get => CountText; set => CountText = value; }
 
@@ -19,8 +20,8 @@ public class Enemy : MonoBehaviour
     public EnemyLifeContlloer EnemyLifeContlloer { get => enemyLifeContlloer; set => enemyLifeContlloer = value; }
 
     public UnityAction<Card> OnClickCard;
-
     
+
 
     //カード内容の定義
     public void SetEnemy(EnemyBase enemyBase)

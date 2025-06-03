@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f359ba17d92a642aa2d30fdfb5f2af, type: 3}
+  m_Name: 105_poison
+  m_EditorClassIdentifier: 
+  displayName: "\u6BD2"
+  cardName: Potion
+  synthesisType: 0
+  type: 4
+  id: 105
+  icon: {fileID: 21300000, guid: c1e43fb0bb601644f8d5de01ccff0da4, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  description: "\u6BD2"
+  cardStatus:
+    attack_Status: 0
+    magic_Status: 0
+    defense_Status: 0
+    heal_Status: 20
+    poison_Status: 0
+  uniqueEffect: {fileID: 11400000, guid: 29706c9e6da415c47b8479b94acffc5e, type: 2}
+  flontBuff:
+  - buff: 1.25
+    flontCard: Sword
+  - buff: 1.25
+    flontCard: Magic
+  - buff: 1.5
+    flontCard: Shield
+  - buff: 1
+    flontCard: Potion

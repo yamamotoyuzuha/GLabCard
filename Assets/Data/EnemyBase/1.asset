@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728bc2c4ad0aecb409c40952bc35a995, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
+  poisonTurn: 0
+  poisonDamage: 0
+  ispoison: 0
+  poisonCount: 0
   icon: {fileID: 21300000, guid: 530fb48c3de39fa43a2078d17063e19e, type: 3}
   Name: "\u30B4\u30FC\u30EC\u30E0"
   type: 1
@@ -19,5 +23,7 @@ MonoBehaviour:
   enemyAttack: 30
   enemyDefense: 0
   enemyMagicDefense: 50
+  PoisonTurl: 0
   enemyCount: 3
   description: "\u5F37\u653B\u6483\u307E\u3067"
+  Weights: 000000000000000000000000
