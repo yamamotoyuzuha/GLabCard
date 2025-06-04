@@ -138,10 +138,23 @@ public class GameMaster : MonoBehaviour
         {
             Card card = player.SubmitList[i];
             Card flontCard = null;
-            if (i != 0)
+            if (i != 0 && card.Base.CardName != "Compensation") //CardNameの処理　追加
             {
-                flontCard = player.SubmitList[i - 1];
+                flontCard = player.SubmitList[i - 1]; //一枚前のカード
             }
+            /*
+            //次のカードを取得する処理　スクリプタブルオブジェクトを使わなかったとき用
+            else if(i != 2 && card.Base.CardName == "Compensation")
+            {
+                if(player.SubmitList.Count > 1)
+                {
+                    flontCard = player.SubmitList[i + 1]; //次のカード
+                    Debug.Log("代償カードの次のカード" + flontCard.Base.CardName);
+                }
+            }
+            */
+
+
             card.transform.position += Vector3.up * 0.2f;
             //ruleBook.FlontEffect(player, flontCard);
             //ruleBook.TypeEffect(player, card);

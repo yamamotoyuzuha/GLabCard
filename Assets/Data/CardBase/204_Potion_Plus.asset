@@ -35,3 +35,6 @@ MonoBehaviour:
     flontCard: Shield
   - buff: 1
     flontCard: Potion
+  - buff: 1
+    flontCard: Compensation
+  compensationMagnification: 0

@@ -40,17 +40,16 @@ public class Compensation : UniqueEffect
         {
             return (int) compensationValue;
         }
-        else
+        /*
+        else //次のカードにバフをかける　スクリプタブルオブジェクトでやればOKだからいらない
         {
-            string cardName = flontCard.Base.CardName;
-            FlontBuff foundBuff = card.Base.FlontBuff.Find(buff => buff.flontCard == cardName);
+            string cardName = flontCard.Base.CardName; //代償カードの次のカードの名前を取得する
+            Debug.Log(cardName);
 
-            if (foundBuff == null)
-            {
-                return (int) compensationValue;
-            }
-            compensationValue *= foundBuff.buff;
-            return compensationValue;
+            flontCard.Base.ComBuff = 5; //次のカードにバフの値を代入
+            return (int)compensationValue;
         }
+        */
+        return (int)compensationValue;
     }
 }

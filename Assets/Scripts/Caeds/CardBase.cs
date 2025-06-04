@@ -24,6 +24,7 @@ public class CardBase : ScriptableObject
     [SerializeField] List<FlontBuff> flontBuff = new List<FlontBuff>();
 
     [SerializeField] float compensationMagnification; //代償カードの倍率
+    //[SerializeField] float compensationBuff; //代償カードが与えるバフ
 
     public CardType Type { get => type; set => type = value; }
     public int ID { get => id; set => id = value; }
@@ -39,6 +40,7 @@ public class CardBase : ScriptableObject
     public CardStatus CardStatus { get => cardStatus; set => cardStatus = value; }
 
     public float ComMagnification { get => compensationMagnification; }
+    //public float ComBuff { get => compensationBuff; set => compensationBuff = value; }
 
 
 }
