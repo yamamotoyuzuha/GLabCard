@@ -24,9 +24,10 @@ MonoBehaviour:
     attack_Status: 0
     magic_Status: 0
     defense_Status: 0
-    heal_Status: 20
+    heal_Status: 0
     poison_Status: 0
-  uniqueEffect: {fileID: 11400000, guid: 29706c9e6da415c47b8479b94acffc5e, type: 2}
+    raigeki_Status: 0
+  uniqueEffect: {fileID: 11400000, guid: dd2d56602a19c0a4ca252264e8ae0c31, type: 2}
   flontBuff:
   - buff: 1.25
     flontCard: Sword

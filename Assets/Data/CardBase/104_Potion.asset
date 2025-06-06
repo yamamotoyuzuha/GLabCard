@@ -25,6 +25,8 @@ MonoBehaviour:
     magic_Status: 0
     defense_Status: 0
     heal_Status: 20
+    poison_Status: 0
+    raigeki_Status: 0
   uniqueEffect: {fileID: 11400000, guid: fe9294e39c184fc4cbffa2406d7df451, type: 2}
   flontBuff:
   - buff: 1.25

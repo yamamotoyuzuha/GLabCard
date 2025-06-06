@@ -68,6 +68,7 @@ public class GameMaster : MonoBehaviour
         deck.DeckListOpen();
         deck.DeckSet();
         SendCardTo(player);
+        
 
         TurnSetup();
     }

@@ -117,20 +117,29 @@ public class RuleBook : MonoBehaviour
     //敵のターン処理
     public void EnemyAttack(Battler player, Enemy enemy)
     {
-        int Hit = (int)(enemy.Base.EnemyAttack * Random.Range(0.8f, 1.1f));
-        float Decrease = 1f - player.Defens / 100f;
-
-        if (enemy.Base.Count1 == 0)
+        if (enemy.Base.IsRaigeki == true)
         {
-            Hit = 2 * Hit;
+            message.text = $"行動不能";
+            
         }
-        Hit = (int)(Hit * Decrease);
-        player.Life -= Hit;
-        message.text = $"{Hit}ダメージをうけた";
+        else 
+        {
+            int Hit = (int)(enemy.Base.EnemyAttack * Random.Range(0.8f, 1.1f));
+            float Decrease = 1f - player.Defens / 100f;
+
+            if (enemy.Base.Count1 == 0)
+            {
+                Hit = 2 * Hit;
+            }
+            Hit = (int)(Hit * Decrease);
+            player.Life -= Hit;
+            message.text = $"{Hit}ダメージをうけた";
+        }
+        enemy.Base.IsRaigeki = false;
         
         if(enemy.Base.IsPoison)
         {
-           
+            Debug.Log(enemy.Base.PoisonTurn);
 
             var adddamege = 5;//重複による追加ダメージ
             Debug.Log(enemy.Base.IsPoison);
@@ -186,6 +195,7 @@ public class RuleBook : MonoBehaviour
                 enemy.Base.IsPoison = false;
                 enemy.Base.PoisonTurn = 0;
             }
+            
             
 
            
