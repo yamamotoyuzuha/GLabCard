@@ -20,7 +20,14 @@ public class Enemy : MonoBehaviour
 
     public UnityAction<Card> OnClickCard;
 
-    
+    private List<float> sleepRates = new List<float>();
+    private int sleepTurn = 0;
+    private bool isSleepActive = false;
+    private bool isSleepingBroken = false;
+    private int maxSleepTurns = 0;
+
+
+
 
     //カード内容の定義
     public void SetEnemy(EnemyBase enemyBase)
@@ -33,7 +40,61 @@ public class Enemy : MonoBehaviour
         CountText1.text = $"{enemyBase.Count1}";
         EnemyLifeContlloer = GetComponent<EnemyLifeContlloer>();
     }
+    //麻酔処理
+    public void ApplySleep(List<float> rates, int maxTurns)
+    {
+        
+        sleepRates = new List<float>(rates);
+        sleepTurn = 0;
+        isSleepActive = true;
+        isSleepingBroken = false;
+        maxSleepTurns = maxTurns;
+       
+    }
+    public bool CheckSleep()
+    {
+        if (!isSleepActive || isSleepingBroken)
+        {
+            //Debug.Log("眠り状態じゃない or ダメージで解除された");
+            return false;
+        }
 
+        if (sleepTurn >= maxSleepTurns)
+        {
+            Debug.Log("眠りのターン終了");
+            isSleepActive = false;
+            return false;
+        }
 
+        float chance = sleepRates[sleepTurn];
+        float randomValue = Random.value;
+        //Debug.Log($"[Sleep判定] Turn:{sleepTurn}, 確率:{chance}, 値:{randomValue}");
 
+        sleepTurn++;
+
+        if (randomValue < chance)
+        {
+            Debug.Log("敵は眠っている！");
+            return true;
+        }
+        else
+        {
+            Debug.Log("敵は起きてしまった！");
+            isSleepActive = false;
+            return false;
+        }
+    }
+
+    public void OnDamaged()
+    {
+        if (isSleepActive)
+        {
+            isSleepingBroken = true;
+            isSleepActive = false;
+        }
+    }
 }
+
+
+
+ 

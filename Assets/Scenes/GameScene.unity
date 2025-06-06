@@ -2987,6 +2987,7 @@ MonoBehaviour:
   gameUI: {fileID: 1820168018}
   synthesis: {fileID: 675590294}
   handMax: 6
+  messageText: {fileID: 0}
   enemyNum: 1
 --- !u!4 &675590291
 Transform:
@@ -4132,6 +4133,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 75c62c86f4376af48be0cb58fc407944, type: 2}
   - {fileID: 11400000, guid: edcda7e997f3f1d4f8beefe7c9fd8bd7, type: 2}
   - {fileID: 11400000, guid: 8ea07de4f1a03614ea7ef756f776789c, type: 2}
+  - {fileID: 11400000, guid: 9eebfc4e3c71b904c800c45ae043383e, type: 2}
 --- !u!4 &959393679
 Transform:
   m_ObjectHideFlags: 0
@@ -4779,18 +4781,6 @@ MonoBehaviour:
     card_2_ID: 101
     card_3_ID: 101
     SynthesisCard: 301
-  - card_1_ID: 102
-    card_2_ID: 102
-    card_3_ID: 102
-    SynthesisCard: 302
-  - card_1_ID: 103
-    card_2_ID: 103
-    card_3_ID: 103
-    SynthesisCard: 303
-  - card_1_ID: 104
-    card_2_ID: 104
-    card_3_ID: 104
-    SynthesisCard: 304
 --- !u!4 &1036250513
 Transform:
   m_ObjectHideFlags: 0
@@ -8618,8 +8608,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1804400923}
   m_HandleRect: {fileID: 1804400922}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.7499007
+  m_Value: -0.00000030517577
+  m_Size: 0.7499946
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

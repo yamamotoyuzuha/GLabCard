@@ -23,7 +23,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] GameUI gameUI;
     [SerializeField] Synthesis synthesis;
     [SerializeField] int handMax;
-
+    [SerializeField] private Text messageText;
     public int enemyNum;
     int cardsum;
     Enemy enemy;
@@ -213,6 +213,13 @@ public class GameMaster : MonoBehaviour
     IEnumerator EnemyAttack()
     {
         //敵の攻撃宣言
+        if (enemy.CheckSleep())
+        {
+            Debug.Log("敵は眠っている！");
+            yield return new WaitForSeconds(1.5f);
+            SetupNextTurn();
+            yield break;
+        }
         ruleBook.TextSetupNext();
         gameUI.MassagePanel.SetActive(true);
         yield return StartCoroutine(gameUI.Sengen(enemy));
