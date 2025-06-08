@@ -27,7 +27,7 @@ MonoBehaviour:
     heal_Status: 0
     poison_Status: 0
     raigeki_Status: 0
-  comMagnification: 0
+  comMagnification: 2
   uniqueEffect: {fileID: 11400000, guid: 5e0558245d5dd044bb801b7085455a6c, type: 2}
   flontBuff:
   - buff: 2

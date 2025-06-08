@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class Reflector : UniqueEffect
 {
     public bool isReflector;
+    public float enemyDamagae; //半減したダメージ
     
     //カードの効果処理
     public override void Execute(Card card, Card flontCard, Battler player, Enemy enemy, Text message)
@@ -21,7 +22,7 @@ public class Reflector : UniqueEffect
     {
         if (isReflector)
         {
-            float enemyDamagae = Hit * 0.5f; //Enemyのダメージを半減
+            enemyDamagae = Hit * 0.5f; //Enemyのダメージを半減
             player.Life -= (int)enemyDamagae;
             Debug.Log(enemyDamagae);
 

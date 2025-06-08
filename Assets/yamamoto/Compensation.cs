@@ -24,6 +24,9 @@ public class Compensation : UniqueEffect
         {
             enemy.Base.EnemyLife = 0;
         }
+
+        //仕様変更あり
+        //固定値になる可能性がある
     }
 
     //一枚前のカードの追加効果
