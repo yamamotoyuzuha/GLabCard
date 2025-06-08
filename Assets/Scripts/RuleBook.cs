@@ -10,7 +10,7 @@ public class RuleBook : MonoBehaviour
     [SerializeField] Text message;
     [SerializeField] float pluseffect;
 
-
+    [SerializeField] Reflector reflector;
 
     //一枚前のカードの追加効果処理
     /*
@@ -117,6 +117,7 @@ public class RuleBook : MonoBehaviour
     //敵のターン処理
     public void EnemyAttack(Battler player, Enemy enemy)
     {
+
         if (enemy.Base.IsRaigeki == true)
         {
             message.text = $"行動不能";
@@ -132,6 +133,9 @@ public class RuleBook : MonoBehaviour
                 Hit = 2 * Hit;
             }
             Hit = (int)(Hit * Decrease);
+
+            reflector.ReflectorAttack(player, enemy, message, Hit);
+
             player.Life -= Hit;
             message.text = $"{Hit}ダメージをうけた";
         }
