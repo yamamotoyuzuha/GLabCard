@@ -49,6 +49,8 @@ public class RuleBook : MonoBehaviour
     public void selectedCardVS(Battler player, Card card, Card flontCard, Enemy enemy)
     {
         card.Base.UniqueEffect.Execute(card, flontCard, player, enemy, message);
+
+        
         /*if (card.Base.Type == CardType.Sword)
         {
             int Hit = (int)(player.Attack * Random.Range(0.8f, 1.2f));
@@ -115,16 +117,91 @@ public class RuleBook : MonoBehaviour
     //敵のターン処理
     public void EnemyAttack(Battler player, Enemy enemy)
     {
-        int Hit = (int)(enemy.Base.EnemyAttack * Random.Range(0.8f, 1.1f));
-        float Decrease = 1f - player.Defens / 100f;
-
-        if (enemy.Base.Count1 == 0)
+        if (enemy.Base.IsRaigeki == true)
         {
-            Hit = 2 * Hit;
+            message.text = $"行動不能";
+            
         }
-        Hit = (int)(Hit * Decrease);
-        player.Life -= Hit;
-        message.text = $"{Hit}ダメージをうけた";
+        else 
+        {
+            int Hit = (int)(enemy.Base.EnemyAttack * Random.Range(0.8f, 1.1f));
+            float Decrease = 1f - player.Defens / 100f;
+
+            if (enemy.Base.Count1 == 0)
+            {
+                Hit = 2 * Hit;
+            }
+            Hit = (int)(Hit * Decrease);
+            player.Life -= Hit;
+            message.text = $"{Hit}ダメージをうけた";
+        }
+        enemy.Base.IsRaigeki = false;
+        
+        if(enemy.Base.IsPoison)
+        {
+            Debug.Log(enemy.Base.PoisonTurn);
+
+            var adddamege = 5;//重複による追加ダメージ
+            Debug.Log(enemy.Base.IsPoison);
+            if (enemy.Base.PoisonTurn == 0)
+            {
+                enemy.Base.EnemyLife -= 10;
+                enemy.Base.PoisonTurn++;
+            }
+            else if (enemy.Base.PoisonTurn == 1)
+            {
+                if (enemy.Base.PoisonCount >= 2)
+                {
+                    Debug.Log(enemy.Base.EnemyLife);
+                    enemy.Base.EnemyLife -= (15 + adddamege);
+                    enemy.Base.PoisonTurn++;
+                    return;
+                }
+                enemy.Base.EnemyLife -= 15;
+                enemy.Base.PoisonTurn++;
+            }
+            else if (enemy.Base.PoisonTurn == 2)
+            {
+                if (enemy.Base.PoisonCount >= 2)
+                {
+                    enemy.Base.EnemyLife -= (20 + adddamege);
+                    enemy.Base.PoisonTurn++;
+                    return;
+                }
+                enemy.Base.EnemyLife -= 20;
+                enemy.Base.PoisonTurn++;
+            }
+            else if (enemy.Base.PoisonTurn == 3)
+            {
+                if (enemy.Base.PoisonCount >= 2)
+                {
+                    enemy.Base.EnemyLife -= (25 + adddamege);
+                    enemy.Base.PoisonTurn++;
+                    return;
+                }
+                enemy.Base.EnemyLife -= 25;
+                enemy.Base.PoisonTurn++;
+            }
+            else if (enemy.Base.PoisonTurn == 4)
+            {
+                
+                if (enemy.Base.PoisonCount >= 1)
+                {
+                    enemy.Base.EnemyLife -= 30;
+                    enemy.Base.PoisonCount--;
+                    return;
+                }
+                enemy.Base.EnemyLife -= 30;
+                enemy.Base.IsPoison = false;
+                enemy.Base.PoisonTurn = 0;
+            }
+            
+            
+
+           
+        }
+        
+       
 
     }
 
