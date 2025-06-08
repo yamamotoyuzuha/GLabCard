@@ -5,7 +5,12 @@ using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "UniqueEffects/Raigeki")]
 public class RaigekiEffect : UniqueEffect
+    
 {
+    
+
+
+   
     private static System.Random rng = new System.Random(); // 毎回作らず static で使い回す
     //カードの効果処理
     public override void Execute(Card card, Card flontCard, Battler player, Enemy enemy, Text message)

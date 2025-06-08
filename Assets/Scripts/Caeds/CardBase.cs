@@ -17,6 +17,7 @@ public class CardBase : ScriptableObject
     [TextArea]
     [SerializeField] string description;
     [SerializeField] CardStatus cardStatus;
+    [SerializeField] int comMagnification;
 
     //[SerializeField] CardEffect cardEffect;
 
@@ -36,8 +37,10 @@ public class CardBase : ScriptableObject
     public UniqueEffect UniqueEffect { get => uniqueEffect; set => uniqueEffect = value; }
     public List<FlontBuff> FlontBuff { get => flontBuff; set => flontBuff = value; }
     public CardStatus CardStatus { get => cardStatus; set => cardStatus = value; }
-    
-    
+    public int ComMagnification { get => comMagnification; }
+
+
+
 }
 
 public enum CardType
