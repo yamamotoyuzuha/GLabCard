@@ -11,6 +11,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] Reaction reaction;
     [SerializeField] Text playerLifeText;
     [SerializeField] Text TurnText;
+    [SerializeField] Text PoisonTurnText;
     [SerializeField] Text TurnResultText;
     [SerializeField] GameObject resultPanel;
     [SerializeField] GameObject deckPanel;
@@ -26,10 +27,11 @@ public class GameUI : MonoBehaviour
     [SerializeField] GameObject returnButton;
     [SerializeField] GameObject massagePanel;
     [SerializeField] Text kekka;
-
+    Enemy enemy;
     public GameObject RulePanel { get => rulePanel; set => rulePanel = value; }
     public GameObject DeckPanel { get => deckPanel; set => deckPanel = value; }
     public GameObject MassagePanel { get => massagePanel; set => massagePanel = value; }
+
 
     //UIの非表示化
     public void UISetUp()
@@ -57,13 +59,18 @@ public class GameUI : MonoBehaviour
     //ライフの表示・変更
     public void ShowLifes(int playerLife)
     {
-        playerLifeText.text = $"{playerLife}HP";
+        playerLifeText.text = $"{playerLife}";
+
     }
 
     //経過ターン数をカウントする
     public void ShowTurn(int turnCount)
     {
-        TurnText.text = $"ターン {turnCount}";
+
+        TurnText.text = $"ターン {turnCount}" ;
+
+        
+
     }
 
     //ゲームの勝敗をパネルで表示

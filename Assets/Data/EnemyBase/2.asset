@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728bc2c4ad0aecb409c40952bc35a995, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
+  poisonTurn: 0
+  poisonDamage: 0
+  ispoison: 0
+  poisonCount: 0
+  israigeki: 0
+  raigekiCount: 1
   icon: {fileID: 21300000, guid: edb7cb4842c884f4cb1056ff19e62ed6, type: 3}
   Name: "\u30C9\u30E9\u30B4\u30F3"
   type: 2
@@ -21,3 +27,4 @@ MonoBehaviour:
   enemyMagicDefense: 30
   enemyCount: 3
   description: "\u5F37\u653B\u6483\u307E\u3067"
+  Weights: 000000000000000000000000
