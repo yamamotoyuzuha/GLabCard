@@ -126,6 +126,7 @@ public class RuleBook : MonoBehaviour
         }
         Hit = (int)(Hit * Decrease);
 
+        /*
         //リフレクターの処理
         if (reflector.isReflector)
         {
@@ -147,6 +148,8 @@ public class RuleBook : MonoBehaviour
             
             return;
         }
+        */
+        reflector.ReflectorAttack(player, enemy, message, Hit);
 
         player.Life -= Hit;
         message.text = $"{Hit}ダメージをうけた";
