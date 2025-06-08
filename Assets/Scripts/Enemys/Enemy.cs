@@ -35,6 +35,11 @@ public class Enemy : MonoBehaviour
         enemyBase.Count1 = enemyBase.EnemyCount;
         Base = enemyBase;
         Base.RaigekiCount = 0;
+        Base.PoisonCount = 0;
+        Base.PoisonDamage = 0;
+        Base.PoisonTurn = 0;
+        Base.IsPoison = false;
+        Base.IsRaigeki = false;
         icon.sprite = enemyBase.Icon;
         descriotionText.text = enemyBase.Description;
         CountText1.text = $"{enemyBase.Count1}";
