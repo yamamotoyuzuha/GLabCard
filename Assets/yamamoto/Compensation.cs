@@ -18,7 +18,7 @@ public class Compensation : UniqueEffect
         player.Life -= player.Compensation; //代償でHPを引く
         
         enemy.Base.EnemyLife -= damage;
-        message.text = $"{damage}代償ダメージを与えた";
+        message.text = $"{damage}の代償ダメージを与えた";
 
         if (enemy.Base.EnemyLife < 0)
         {
@@ -50,6 +50,17 @@ public class Compensation : UniqueEffect
             return (int)compensationValue;
         }
         */
-        return (int)compensationValue;
+        else
+        {
+            string cardName = flontCard.Base.CardName;
+            FlontBuff foundBuff = card.Base.FlontBuff.Find(buff => buff.flontCard == cardName);
+
+            if (foundBuff == null)
+            {
+                return (int)compensationValue;
+            }
+            compensationValue *= foundBuff.buff;
+            return (int)compensationValue;
+        }
     }
 }

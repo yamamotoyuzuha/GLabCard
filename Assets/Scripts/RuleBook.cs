@@ -10,6 +10,8 @@ public class RuleBook : MonoBehaviour
     [SerializeField] Text message;
     [SerializeField] float pluseffect;
 
+    [Header("リフレクター")]
+    [SerializeField] Reflector reflector;
 
 
     //一枚前のカードの追加効果処理
@@ -123,6 +125,29 @@ public class RuleBook : MonoBehaviour
             Hit = 2 * Hit;
         }
         Hit = (int)(Hit * Decrease);
+
+        //リフレクターの処理
+        if (reflector.isReflector)
+        {
+            Debug.Log("リフレクターの処理を行う");
+            
+            float enemyDamagae = Hit * 0.5f; //Enemyのダメージを半減
+            player.Life -= (int)enemyDamagae;
+            Debug.Log(enemyDamagae);
+
+            //Enemyにダメージを与える処理
+            int reflectorDamage = (int)enemyDamagae * 3;
+            enemy.Base.EnemyLife -= reflectorDamage;
+            message.text = $"{reflectorDamage}ダメージを反射で与えた";
+            Debug.Log(reflectorDamage);
+
+            reflector.isReflector = false;
+            
+            Debug.Log("リフレクターの処理を終了");
+            
+            return;
+        }
+
         player.Life -= Hit;
         message.text = $"{Hit}ダメージをうけた";
 

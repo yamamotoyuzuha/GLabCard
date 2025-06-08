@@ -17,7 +17,6 @@ public class Battler : MonoBehaviour
     [SerializeField] int defens;
     [SerializeField] int compensation; //代償で引かれる数値
 
-
     public UnityAction OnSubmitAction;
     public UnityAction OnSynthesisAction;
 
@@ -33,7 +32,6 @@ public class Battler : MonoBehaviour
     public SubmitPosition SubmitPosition { get => submitPosition; }
     //public Card SubmitCard { get => submitPosition.SubmitCard;} 
     public List<Card> SubmitList { get => submitPosition.Submitlist; }
-
 
     public void SetPlayer()
     {

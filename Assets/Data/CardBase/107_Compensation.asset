@@ -26,5 +26,7 @@ MonoBehaviour:
     defense_Status: 0
     heal_Status: 0
   uniqueEffect: {fileID: 11400000, guid: 5e0558245d5dd044bb801b7085455a6c, type: 2}
-  flontBuff: []
+  flontBuff:
+  - buff: 2
+    flontCard: Compensation
   compensationMagnification: 1.5
