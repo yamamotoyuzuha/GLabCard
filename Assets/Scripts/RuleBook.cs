@@ -10,7 +10,7 @@ public class RuleBook : MonoBehaviour
     [SerializeField] Text message;
     [SerializeField] float pluseffect;
 
-
+    [SerializeField] Reflector reflector;
 
     //一枚前のカードの追加効果処理
     /*
@@ -132,6 +132,14 @@ public class RuleBook : MonoBehaviour
                 Hit = 2 * Hit;
             }
             Hit = (int)(Hit * Decrease);
+
+            //リフレクターの処理
+            if (reflector.isReflector){
+                reflector.ReflectorAttack(player, enemy, message, Hit);
+                message.text = $"{reflector.enemyDamagae}ダメージをうけた";
+                return;
+            }
+
             player.Life -= Hit;
             message.text = $"{Hit}ダメージをうけた";
         }
