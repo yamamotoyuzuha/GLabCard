@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728bc2c4ad0aecb409c40952bc35a995, type: 3}
   m_Name: 0
   m_EditorClassIdentifier: 
+  poisonTurn: 0
+  poisonDamage: 0
+  ispoison: 0
+  poisonCount: 0
+  israigeki: 0
+  raigekiCount: 0
   icon: {fileID: 21300000, guid: 437accca62cf30e45858f3048125d86f, type: 3}
   Name: "\u30B9\u30E9\u30A4\u30E0"
   type: 0

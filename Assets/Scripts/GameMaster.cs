@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ using UnityEngine.XR;
 
 public class GameMaster : MonoBehaviour
 {
+    
     [SerializeField] Battler player;
     [SerializeField] CardGenerator cardGenerator;
     [SerializeField] EnemyGenerator enemyGenerator;
@@ -23,18 +25,25 @@ public class GameMaster : MonoBehaviour
     [SerializeField] GameUI gameUI;
     [SerializeField] Synthesis synthesis;
     [SerializeField] int handMax;
+   
 
     public int enemyNum;
     int cardsum;
     Enemy enemy;
-
+  
     int TurnCount;
 
-
+    // public void Rese(Enemy enemy)
+    // {
+    //    enemy.Base.PoisonStatus = 0;
+    // }
     private void Start()
     {
         gameUI.UISetUp();
         deck.DeckDefault();
+
+
+
     }
 
     //モンスターをセレクトした後のセットアップ
@@ -59,6 +68,7 @@ public class GameMaster : MonoBehaviour
         deck.DeckListOpen();
         deck.DeckSet();
         SendCardTo(player);
+        
 
         TurnSetup();
     }
@@ -67,6 +77,7 @@ public class GameMaster : MonoBehaviour
     {
         TurnCount = 1;
         gameUI.ShowTurn(TurnCount);
+        
     }
 
     //フィールドにカードが設置されているかの判定・決定ボタンの削除
@@ -92,7 +103,7 @@ public class GameMaster : MonoBehaviour
     //手札を生成
     void SendCardTo(Battler battler)
     {
-        if(deck.cardDeck.Count != 0)
+        if (deck.cardDeck.Count != 0)
         {
             cardsum = handMax - battler.Hand.List.Count;
             if (cardsum > deck.cardDeck.Count)
@@ -109,7 +120,7 @@ public class GameMaster : MonoBehaviour
                 cardsum = deck.cardDeck.Count;
             }
         }
-        else if(deck.cardDeck.Count == 0)
+        else if (deck.cardDeck.Count == 0)
         {
             cardsum = 0;
         }
@@ -134,14 +145,26 @@ public class GameMaster : MonoBehaviour
         player.Hand.gameObject.SetActive(false);
         cardGuide.SetActive(false);
         yield return new WaitForSeconds(1.2f);
-        for (int i = 0;i < player.SubmitList.Count; i++)
+        for (int i = 0; i < player.SubmitList.Count; i++)
         {
             Card card = player.SubmitList[i];
             Card flontCard = null;
             if (i != 0)
             {
-                flontCard = player.SubmitList[i - 1];
+                flontCard = player.SubmitList[i - 1]; //一枚前のカード
             }
+            /*
+            //次のカードを取得する処理　スクリプタブルオブジェクトを使わなかったとき用
+            else if(i != 2 && card.Base.CardName == "Compensation")
+            {
+                if(player.SubmitList.Count > 1)
+                {
+                    flontCard = player.SubmitList[i + 1]; //次のカード
+                    Debug.Log("代償カードの次のカード" + flontCard.Base.CardName);
+                }
+            }
+            */
+
             card.transform.position += Vector3.up * 0.2f;
             //ruleBook.FlontEffect(player, flontCard);
             //ruleBook.TypeEffect(player, card);
@@ -173,9 +196,9 @@ public class GameMaster : MonoBehaviour
 
         Vector2 goal = player.SubmitList[0].transform.position;
 
-        for (int i = 1;i < player.SubmitList.Count; i++)
+        for (int i = 1; i < player.SubmitList.Count; i++)
         {
-            StartCoroutine(CardSlide(player.SubmitList[i], goal,0.5f));
+            StartCoroutine(CardSlide(player.SubmitList[i], goal, 0.5f));
         }
         yield return new WaitForSeconds(0.7f);
 
@@ -226,6 +249,7 @@ public class GameMaster : MonoBehaviour
             yield return new WaitForSeconds(2f);
             ShowResult();
             yield break;
+            
         }
         gameUI.ShowLifes(player.Life);
         yield return new WaitForSeconds(1.5f);
@@ -238,16 +262,22 @@ public class GameMaster : MonoBehaviour
     void ShowResult()
     {
         if (player.Life == 0)
-            gameUI.ShowGameResult("LOSE" ,TurnCount);
+            gameUI.ShowGameResult("LOSE", TurnCount);
 
         else if (enemy.Base.EnemyLife == 0)
-            gameUI.ShowGameResult("WIN" ,TurnCount);
+            gameUI.ShowGameResult("WIN", TurnCount);
     }
 
     //次ターンに向けてのリセットと準備
 
+
     void SetupNextTurn()
     {
+
+
+
+
+
         Debug.Log($"敵のLife：{enemy.Base.EnemyLife}");
         player.SetupNext();
         ruleBook.TextSetupNext();
@@ -258,8 +288,10 @@ public class GameMaster : MonoBehaviour
         player.Hand.gameObject.SetActive(true);
         cardGuide.SetActive(true);
         SendCardTo(player);
-        
+
         gameUI.ShowTurn(TurnCount += 1);
+       
+
     }
 
     //ボタンを初期化する
@@ -273,5 +305,27 @@ public class GameMaster : MonoBehaviour
         SynthesisButton.SetActive(true);
         synthesis.OnSynthesisPanel();
     }
-
 }
+   /* public void ApplyPoisonDamage(Text message, Enemy enemy)
+    {
+        if (enemy.Base.PoisonTurn > 0)
+        {
+            enemy.Base.EnemyLife -= enemy.Base.PoisonDamage;
+            message.text += $"\n{enemy.Base.Name1} は毒で {enemy.Base.PoisonDamage} ダメージを受けた！";
+
+            enemy.Base.PoisonDamage += 5;
+            if (enemy.Base.PoisonDamage > 30)
+            {
+                enemy.Base.PoisonDamage = 30; // 上限
+            }
+
+            
+
+            if (enemy.Base.EnemyLife < 0)
+            {
+                enemy.Base.EnemyLife = 0;
+            }
+        }
+    }*/
+
+
