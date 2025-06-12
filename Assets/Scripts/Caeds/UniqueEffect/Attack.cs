@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "UniqueEffects/Attack")]
@@ -13,6 +11,19 @@ public class AttackEffect : UniqueEffect
 
         int Hit = (int)(attackValue * Random.Range(0.8f, 1.2f));
         float defense = 1f - enemy.Base.EnemyDefense / 100f;
+
+        //代償カードのバフ計算　各カードのスクリプタブルオブジェクトのBuffに代償カードを追加すればOK
+        /*
+        int damage = 0;
+        if(card.Base.ComBuff != 0)
+        {
+            damage = (int)(Hit * defense) * (int)card.Base.ComBuff;
+        }
+        else
+        {
+            damage = (int)(Hit * defense);
+        }
+        */
         int damage = (int)(Hit * defense);
         enemy.Base.EnemyLife -= damage;
         message.text = $"{damage}ダメージ与えた";
@@ -20,6 +31,8 @@ public class AttackEffect : UniqueEffect
         {
             enemy.Base.EnemyLife = 0;
         }
+
+        //card.Base.ComBuff = 0; //バフを解除
     }
     //一枚前のカードの追加効果処理
     public int FlontBuff(Card card, Card flontCard)
