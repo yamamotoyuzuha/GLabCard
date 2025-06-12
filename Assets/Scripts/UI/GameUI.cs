@@ -67,9 +67,9 @@ public class GameUI : MonoBehaviour
     public void ShowTurn(int turnCount)
     {
 
-        TurnText.text = $"ターン {turnCount}" ;
+        TurnText.text = $"ターン {turnCount}";
 
-        
+
 
     }
 
@@ -181,4 +181,11 @@ public class GameUI : MonoBehaviour
                 break;
         }
     }
+    public void show_text(Enemy enemy)
+    {
+        kekka.text = $"{enemy.Base.Name1}は眠っている！";
+
+    }
+
+
 }
