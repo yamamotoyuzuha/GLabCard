@@ -185,7 +185,19 @@ public class GameMaster : MonoBehaviour
         gameUI.MassagePanel.SetActive(false);
         yield return new WaitForSeconds(0.7f);
 
-        StartCoroutine(EnemyAttack());
+        /*
+        if (enemy.CheckSleep())
+        {
+            gameUI.MassagePanel.SetActive(true);
+            Debug.Log(enemy.CheckSleep());
+        }
+        else 
+        {
+            Debug.Log(enemy.CheckSleep());
+            StartCoroutine(EnemyAttack());
+        }
+        */
+       StartCoroutine(EnemyAttack());
     }
     //カード合成する
     IEnumerator CardSynthesis()
@@ -235,6 +247,25 @@ public class GameMaster : MonoBehaviour
 
     IEnumerator EnemyAttack()
     {
+        if (enemy.CheckSleep()) 
+        {
+            ruleBook.TextSetupNext();
+            gameUI.MassagePanel.SetActive(true);
+            Debug.Log("麻酔処理できてます");
+
+            gameUI.show_text(enemy);
+            yield return new WaitForSeconds(1.5f);
+
+            
+
+
+
+            gameUI.MassagePanel.SetActive(false);
+            SetupNextTurn();
+
+            yield break; 
+        }
+
         //敵の攻撃宣言
         ruleBook.TextSetupNext();
         gameUI.MassagePanel.SetActive(true);

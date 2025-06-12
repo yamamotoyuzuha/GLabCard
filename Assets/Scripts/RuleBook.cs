@@ -117,6 +117,8 @@ public class RuleBook : MonoBehaviour
     //敵のターン処理
     public void EnemyAttack(Battler player, Enemy enemy)
     {
+
+
         if (enemy.Base.IsRaigeki == true)
         {
             message.text = $"行動不能";
@@ -140,6 +142,8 @@ public class RuleBook : MonoBehaviour
                 return;
             }
 
+            if (enemy.CheckSleep()) return;
+            
             player.Life -= Hit;
             message.text = $"{Hit}ダメージをうけた";
         }
