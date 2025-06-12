@@ -17,7 +17,7 @@ MonoBehaviour:
   synthesisType: 0
   id: 106
   icon: {fileID: 0}
-  color: {r: 0.98490566, g: 0.9718975, b: 0.9718975, a: 0}
+  color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   description: 
   cardStatus:
     attack_Status: 0
