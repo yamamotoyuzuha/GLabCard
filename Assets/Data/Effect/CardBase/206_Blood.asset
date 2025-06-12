@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95f359ba17d92a642aa2d30fdfb5f2af, type: 3}
-  m_Name: 204_Potion_Plus
+  m_Name: 206_Blood
   m_EditorClassIdentifier: 
-  displayName: "\u30DD\u30FC\u30B7\u30E7\u30F3\uFF0B"
-  cardName: Potion_Plus
+  displayName: "\u5438\u8840"
+  cardName: ' Bloodsucking'
   synthesisType: 1
-  type: 2
-  id: 204
-  icon: {fileID: 21300000, guid: c1e43fb0bb601644f8d5de01ccff0da4, type: 3}
-  color: {r: 1, g: 0, b: 0, a: 1}
-  description: "\u8D85\u518D\u751F"
+  type: 0
+  id: 206
+  icon: {fileID: 21300000, guid: bcf8e6ef52b415e4da20c300859c4d47, type: 3}
+  color: {r: 1, g: 0.03852384, b: 0.028301716, a: 1}
+  description: "\u5438\u8840\u653B\u6483"
   cardStatus:
-    attack_Status: 0
+    attack_Status: 60
     magic_Status: 0
     defense_Status: 0
-    heal_Status: 50
-  uniqueEffect: {fileID: 11400000, guid: fe9294e39c184fc4cbffa2406d7df451, type: 2}
+    heal_Status: 30
+    poison_Status: 0
+    raigeki_Status: 0
+  comMagnification: 0
+  uniqueEffect: {fileID: 11400000, guid: 5c529f2ee315b3a409be6d6c4ff716f3, type: 2}
   flontBuff:
-  - buff: 1.25
-    flontCard: Sword
-  - buff: 1.25
-    flontCard: Magic
   - buff: 1.5
-    flontCard: Shield
-  - buff: 1
-    flontCard: Potion
+    flontCard: Sword
   - buff: 2
-    flontCard: Compensation
-  compensationMagnification: 0
+    flontCard: Magic
+  - buff: 0.75
+    flontCard: Shield
+  - buff: 1.25
+    flontCard: Potion

@@ -1,10 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Windows;
 
 [CreateAssetMenu]
 public class EnemyBase : ScriptableObject
 {
+    
+    [SerializeField] int poisonTurn = 0;      // 毒状態が続くターン数
+    [SerializeField] int poisonDamage = 0;
+    [SerializeField] bool ispoison; //毒状態
+    [SerializeField] int poisonCount;//重複されて数
+    [SerializeField] bool israigeki;//行動不能状態かどうか
+    [SerializeField] int raigekiCount; //何回つかったか
     [Header("エネミーの種類")]
     [SerializeField] Sprite icon;
     [SerializeField] string Name;
@@ -16,6 +25,7 @@ public class EnemyBase : ScriptableObject
     [SerializeField] int enemyAttack;
     [SerializeField] int enemyDefense;
     [SerializeField] int enemyMagicDefense;
+    
     [Space(10)]
     [Header("強攻撃")]
     [SerializeField] int enemyCount;
@@ -25,6 +35,14 @@ public class EnemyBase : ScriptableObject
 
     [SerializeField, Header("確率"), Range(0, 100)]
     private int[] Weights = new int[3];
+    private void Awake()
+    {
+        raigekiCount = 0;
+    }
+
+
+
+
 
 
 
@@ -40,7 +58,18 @@ public class EnemyBase : ScriptableObject
     public int EnemyCount { get => enemyCount; set => enemyCount = value; }
     public int Count1 { get => Count; set => Count = value; }
     public int[] Weights1 { get => Weights; set => Weights = value; }
+    public int PoisonTurn { get => poisonTurn; set => poisonTurn = value; }
+    public int PoisonDamage { get => poisonDamage; set => poisonDamage = value; }
+    public bool IsPoison { get => ispoison; set => ispoison = value; }
+    public int PoisonCount { get => poisonCount; set => poisonCount = value; }
+    public bool IsRaigeki {  get => israigeki; set => israigeki = value;}
+    public int RaigekiCount {  get => raigekiCount; set => raigekiCount = value; }
+
+
+
+
 }
+
 
 public enum EnemyType
 {

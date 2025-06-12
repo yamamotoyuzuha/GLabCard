@@ -10,12 +10,14 @@ public class CardBase : ScriptableObject
     [SerializeField] string displayName;
     [SerializeField] string cardName;
     [SerializeField] SynthesisType synthesisType;
+    [SerializeField] CardType type;
     [SerializeField] int id;
     [SerializeField] Sprite icon;
     [SerializeField] Color color;
     [TextArea]
     [SerializeField] string description;
     [SerializeField] CardStatus cardStatus;
+    [SerializeField] int comMagnification;
 
     //[SerializeField] CardEffect cardEffect;
 
@@ -23,7 +25,7 @@ public class CardBase : ScriptableObject
     [SerializeField] List<FlontBuff> flontBuff = new List<FlontBuff>();
 
 
-   
+    public CardType Type { get => type; set => type = value; }
     public int ID { get => id; set => id = value; }
     public Sprite Icon { get => icon; set => icon = value; }
     public string Description { get => description; set => description = value; }
@@ -35,9 +37,21 @@ public class CardBase : ScriptableObject
     public UniqueEffect UniqueEffect { get => uniqueEffect; set => uniqueEffect = value; }
     public List<FlontBuff> FlontBuff { get => flontBuff; set => flontBuff = value; }
     public CardStatus CardStatus { get => cardStatus; set => cardStatus = value; }
-    
+    public int ComMagnification { get => comMagnification; }
+
+
+
 }
 
+public enum CardType
+{
+    Attack,
+    Defense,
+    Heal,
+    exception,
+    Poison,
+    raigeki,
+}
 
 public enum SynthesisType
 {
@@ -53,15 +67,21 @@ public class CardStatus
     [SerializeField] float magic_Status;
     [SerializeField] float defense_Status;
     [SerializeField] float heal_Status;
+    [SerializeField] float poison_Status;
+    [SerializeField] float raigeki_Status;
+
 
     public float Attack_Status { get => attack_Status; set => attack_Status = value; }
     public float Magic_Status { get => magic_Status; set => magic_Status = value; }
     public float Defense_Status { get => defense_Status; set => defense_Status = value; }
     public float Heal_Status { get => heal_Status; set => heal_Status = value; }
+    public float Poison_Status { get => poison_Status; set => poison_Status = value; }
+    public float Raigeki_Status { get => raigeki_Status; set => raigeki_Status = value; }
+
 }
 
 //後ろのカードに与えるエフェクト
-/*
+
 [Serializable]
 public class CardEffect
 {
@@ -69,13 +89,17 @@ public class CardEffect
     [SerializeField] float magic_Effect;
     [SerializeField] float protection_Effect;
     [SerializeField] float heal_Effect;
+    [SerializeField] float poison_Effect;
+    [SerializeField] float raigeki_Effect;
 
     public float Attack_Effect { get => attack_Effect; set => attack_Effect = value; }
     public float Magic_Effect { get => magic_Effect; set => magic_Effect = value; }
     public float Protection_Effect { get => protection_Effect; set => protection_Effect = value; }
     public float Heal_Effect { get => heal_Effect; set => heal_Effect = value; }
+    public float Poison_Effect { get => poison_Effect; set => poison_Effect = value; }
+    public float Raigeki_Effect { get => raigeki_Effect; set => raigeki_Effect = value; }
 }
-*/
+
 
 [System.Serializable]
 public class FlontBuff
