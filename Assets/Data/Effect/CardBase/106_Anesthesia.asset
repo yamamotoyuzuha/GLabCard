@@ -15,15 +15,19 @@ MonoBehaviour:
   displayName: "\u9EBB\u9154"
   cardName: Anesthesia
   synthesisType: 0
+  type: 0
   id: 106
-  icon: {fileID: 0}
-  color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
-  description: 
+  icon: {fileID: 21300000, guid: 28fe32556d420b846b6853c239a47390, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  description: "\u76F8\u624B\u3092\u7720\u3089\u305B\u308B"
   cardStatus:
     attack_Status: 0
     magic_Status: 0
     defense_Status: 0
     heal_Status: 0
+    poison_Status: 0
+    raigeki_Status: 0
+  comMagnification: 0
   uniqueEffect: {fileID: 11400000, guid: 045992159ebdded45b80c5f08e43733d, type: 2}
   flontBuff:
   - buff: 1

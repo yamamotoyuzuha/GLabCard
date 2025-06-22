@@ -290,7 +290,7 @@ public class GameMaster : MonoBehaviour
     }
 
     //ゲームの結果を表示する
-    void ShowResult()
+    public void ShowResult()
     {
         if (player.Life == 0)
             gameUI.ShowGameResult("LOSE", TurnCount);
@@ -304,10 +304,6 @@ public class GameMaster : MonoBehaviour
 
     void SetupNextTurn()
     {
-
-
-
-
 
         Debug.Log($"敵のLife：{enemy.Base.EnemyLife}");
         player.SetupNext();
