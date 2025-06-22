@@ -25,6 +25,9 @@ MonoBehaviour:
     magic_Status: 0
     defense_Status: 50
     heal_Status: 0
+    poison_Status: 0
+    raigeki_Status: 0
+  comMagnification: 0
   uniqueEffect: {fileID: 11400000, guid: cb71d7c8caa1dd64d864449532d0c751, type: 2}
   flontBuff:
   - buff: 0.75
@@ -35,6 +38,7 @@ MonoBehaviour:
     flontCard: Shield
   - buff: 1.5
     flontCard: Potion
-  - buff: 2
+  - buff: 1.5
     flontCard: Compensation
-  compensationMagnification: 0
+  - buff: 0.75
+    flontCard: ' Bloodsucking'

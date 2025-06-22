@@ -15,11 +15,11 @@ MonoBehaviour:
   displayName: "\u4EE3\u511F"
   cardName: Compensation
   synthesisType: 0
-  type: 5
+  type: 0
   id: 107
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 36bdbba0a33233b4aac24dae5a05941b, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
-  description: "HP\u304C\u6E1B\u308B"
+  description: "HP\u3092\u4EE3\u511F\u306B\u653B\u6483"
   cardStatus:
     attack_Status: 50
     magic_Status: 0
@@ -31,4 +31,4 @@ MonoBehaviour:
   uniqueEffect: {fileID: 11400000, guid: 5e0558245d5dd044bb801b7085455a6c, type: 2}
   flontBuff:
   - buff: 2
-    flontCard: Compensation
+    flontCard: Sword

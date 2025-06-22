@@ -17,11 +17,9 @@ MonoBehaviour:
   synthesisType: 0
   type: 5
   id: 108
-  icon: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  description: 'raigeki
-
-'
+  icon: {fileID: 21300000, guid: 4f24ee103faf9a449bf0c58954615b28, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  description: "\u96F7\u5C5E\u6027\u653B\u6483"
   cardStatus:
     attack_Status: 0
     magic_Status: 0

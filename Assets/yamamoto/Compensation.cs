@@ -14,6 +14,7 @@ public class Compensation : UniqueEffect
         int hit = (int)(compensationValue * Random.Range(0.8f, 1.2f));
         float defense = 1f - enemy.Base.EnemyDefense / 100f;
         int damage = (int)(hit * (defense * card.Base.ComMagnification));
+        Debug.Log(damage);
 
         player.Life -= player.Compensation; //代償でHPを引く
         
