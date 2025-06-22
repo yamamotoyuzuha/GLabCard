@@ -10,6 +10,7 @@ public class Reflector : UniqueEffect
 {
     public bool isReflector;
     public float enemyDamagae; //半減したダメージ
+    public int reflectorDamage; //リフレクターダメージ
     
     //カードの効果処理
     public override void Execute(Card card, Card flontCard, Battler player, Enemy enemy, Text message)
@@ -27,9 +28,8 @@ public class Reflector : UniqueEffect
             Debug.Log(enemyDamagae);
 
             //Enemyにダメージを与える処理
-            int reflectorDamage = (int)enemyDamagae * 3;
+            reflectorDamage = (int)enemyDamagae * 3;
             enemy.Base.EnemyLife -= reflectorDamage;
-            message.text = $"{reflectorDamage}ダメージを反射で与えた";
             Debug.Log(reflectorDamage);
 
             //reflector.isReflector = false;

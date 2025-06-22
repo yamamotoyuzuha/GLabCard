@@ -21,7 +21,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   description: "HP\u304C\u6E1B\u308B"
   cardStatus:
-    attack_Status: 0
+    attack_Status: 50
     magic_Status: 0
     defense_Status: 0
     heal_Status: 0
