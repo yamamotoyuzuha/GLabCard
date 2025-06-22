@@ -138,7 +138,7 @@ public class RuleBook : MonoBehaviour
             //リフレクターの処理
             if (reflector.isReflector){
                 reflector.ReflectorAttack(player, enemy, message, Hit);
-                message.text = $"{reflector.enemyDamagae}ダメージをうけた";
+                message.text = $"{(int)reflector.enemyDamagae}ダメージをうけ、{reflector.reflectorDamage}を反射で与えた";
                 return;
             }
 
