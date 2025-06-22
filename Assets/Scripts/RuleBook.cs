@@ -45,6 +45,12 @@ public class RuleBook : MonoBehaviour
         }
     }*/
 
+    private GameMaster gameMaster;
+    private void Start()
+    {
+        gameMaster = GetComponent<GameMaster>();
+    }
+
     //カードの効果処理
     public void selectedCardVS(Battler player, Card card, Card flontCard, Enemy enemy)
     {
@@ -149,9 +155,10 @@ public class RuleBook : MonoBehaviour
         }
         enemy.Base.IsRaigeki = false;
         
+        //毒ポーションの処理
         if(enemy.Base.IsPoison)
         {
-            Debug.Log(enemy.Base.PoisonTurn);
+            Debug.Log(enemy.Base.PoisonTurn);//毒の経過ターン
 
             var adddamege = 5;//重複による追加ダメージ
             Debug.Log(enemy.Base.IsPoison);
@@ -159,6 +166,8 @@ public class RuleBook : MonoBehaviour
             {
                 enemy.Base.EnemyLife -= 10;
                 enemy.Base.PoisonTurn++;
+                enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                gameMaster.ShowResult();
             }
             else if (enemy.Base.PoisonTurn == 1)
             {
@@ -166,11 +175,16 @@ public class RuleBook : MonoBehaviour
                 {
                     Debug.Log(enemy.Base.EnemyLife);
                     enemy.Base.EnemyLife -= (15 + adddamege);
+                    Debug.Log(enemy.Base.EnemyLife);
                     enemy.Base.PoisonTurn++;
+                    enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                    gameMaster.ShowResult();
                     return;
                 }
                 enemy.Base.EnemyLife -= 15;
                 enemy.Base.PoisonTurn++;
+                enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                gameMaster.ShowResult();
             }
             else if (enemy.Base.PoisonTurn == 2)
             {
@@ -178,10 +192,14 @@ public class RuleBook : MonoBehaviour
                 {
                     enemy.Base.EnemyLife -= (20 + adddamege);
                     enemy.Base.PoisonTurn++;
+                    enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                    gameMaster.ShowResult();
                     return;
                 }
                 enemy.Base.EnemyLife -= 20;
                 enemy.Base.PoisonTurn++;
+                enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                gameMaster.ShowResult();
             }
             else if (enemy.Base.PoisonTurn == 3)
             {
@@ -189,10 +207,15 @@ public class RuleBook : MonoBehaviour
                 {
                     enemy.Base.EnemyLife -= (25 + adddamege);
                     enemy.Base.PoisonTurn++;
+                    enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                    gameMaster.ShowResult();
+
                     return;
                 }
                 enemy.Base.EnemyLife -= 25;
                 enemy.Base.PoisonTurn++;
+                enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                gameMaster.ShowResult();
             }
             else if (enemy.Base.PoisonTurn == 4)
             {
@@ -201,12 +224,17 @@ public class RuleBook : MonoBehaviour
                 {
                     enemy.Base.EnemyLife -= 30;
                     enemy.Base.PoisonCount--;
+                    enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                    gameMaster.ShowResult();
                     return;
                 }
                 enemy.Base.EnemyLife -= 30;
+                enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                gameMaster.ShowResult();
                 enemy.Base.IsPoison = false;
                 enemy.Base.PoisonTurn = 0;
             }
+            
             
             
 
@@ -245,4 +273,10 @@ public class RuleBook : MonoBehaviour
     {
         message.text = "";
     }
+
+   
+
+
 }
+
+

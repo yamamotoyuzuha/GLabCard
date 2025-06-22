@@ -41,7 +41,7 @@ public class BloodEffect : UniqueEffect
 
             player.Life += healValue;
 
-        message.text = $"{healValue}HP吸血した";
+        message.text = $"{healValue}HP吸血した！";
 
 
 

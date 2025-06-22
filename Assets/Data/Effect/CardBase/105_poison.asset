@@ -17,7 +17,7 @@ MonoBehaviour:
   synthesisType: 0
   type: 4
   id: 105
-  icon: {fileID: 21300000, guid: c1e43fb0bb601644f8d5de01ccff0da4, type: 3}
+  icon: {fileID: 21300000, guid: 36b606885b0253f4587642c5a43867eb, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
   description: "\u6BD2"
   cardStatus:
@@ -27,6 +27,7 @@ MonoBehaviour:
     heal_Status: 0
     poison_Status: 0
     raigeki_Status: 0
+  comMagnification: 0
   uniqueEffect: {fileID: 11400000, guid: dd2d56602a19c0a4ca252264e8ae0c31, type: 2}
   flontBuff:
   - buff: 1.25
