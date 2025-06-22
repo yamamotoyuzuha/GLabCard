@@ -18,7 +18,8 @@ public class Compensation : UniqueEffect
         player.Life -= player.Compensation; //代償でHPを引く
         
         enemy.Base.EnemyLife -= damage;
-        message.text = $"{damage}の代償ダメージを与えた";
+        //message.text = $"{damage}の代償ダメージを与えた";
+        message.text = $"{player.Compensation}ダメージを受けた。{damage}ダメージを与えた";
 
         if (enemy.Base.EnemyLife < 0)
         {
@@ -32,27 +33,21 @@ public class Compensation : UniqueEffect
     //一枚前のカードの追加効果
     public float FlontBuff(Card card, Card flontCard)
     {
-        //Swordのattack値を参照する
+        /*
+        //Swordのattack値を参照する　仕様変更
         var obj = GameObject.Find("CardGenerator");
         var cardGe = obj.GetComponent<CardGenerator>();
         var getSword = cardGe.CardBases.Find(x => x.CardName == "Sword");
+        
 
         float compensationValue = (int)getSword.CardStatus.Attack_Status;
+        */
+        float compensationValue = (int)card.Base.CardStatus.Attack_Status;
         
         if(flontCard == null)
         {
             return (int) compensationValue;
         }
-        /*
-        else //次のカードにバフをかける　スクリプタブルオブジェクトでやればOKだからいらない
-        {
-            string cardName = flontCard.Base.CardName; //代償カードの次のカードの名前を取得する
-            Debug.Log(cardName);
-
-            flontCard.Base.ComBuff = 5; //次のカードにバフの値を代入
-            return (int)compensationValue;
-        }
-        */
         else
         {
             string cardName = flontCard.Base.CardName;
