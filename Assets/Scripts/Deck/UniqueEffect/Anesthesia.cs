@@ -8,7 +8,7 @@ public class AnesthesiaEffect : UniqueEffect
 {
     [Header("麻酔の確率")]
     [SerializeField]
-    public List<float> sleepProbabilities = new List<float> { 0.66f, 0.33f };
+    public List<float> sleepProbabilities = new List<float>();
     [Header("継続ターン数")]
     public int duration = 2;
 

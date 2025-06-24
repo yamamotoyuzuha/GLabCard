@@ -15,6 +15,7 @@ public class MagicEffect : UniqueEffect
         float defense = 1f - enemy.Base.EnemyMagicDefense / 100f;
         int damage = (int)(Hit * defense);
         enemy.Base.EnemyLife -= damage;
+        enemy.isSleepingBroken = true;
         message.text = $"{damage}魔法ダメージあたえた";
         if (enemy.Base.EnemyLife < 0)
         {

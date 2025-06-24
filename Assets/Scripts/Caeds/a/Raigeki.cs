@@ -18,10 +18,11 @@ public class RaigekiEffect : UniqueEffect
         //float defense = 1f - enemy.Base.EnemyDefense / 100f;
         //int damage = (int)(Hit * defense);
 
-        int damage = Random.Range(10, 15);
+        int damage = Random.Range(10, 15);//10-15のランダムで固定ダメージを与える
 
         Debug.Log(damage);
         enemy.Base.EnemyLife -= damage;
+        enemy.isSleepingBroken = true;
         //message.text = $"{damage}ダメージ与えた"; //＝＞動いていなかったので一旦コメント化しておきました。
         if (enemy.Base.EnemyLife < 0)
         {
@@ -30,9 +31,10 @@ public class RaigekiEffect : UniqueEffect
         enemy.Base.RaigekiCount++;
         Debug.Log(enemy.Base.RaigekiCount);
 
-        if (enemy.Base.RaigekiCount == 4)
+        if (enemy.Base.RaigekiCount >= 4)
         {
             // 4回目なら確定で発動
+
             enemy.Base.IsRaigeki = true;
             message.text = $"{damage}ダメージを与え、\n雷撃が確定で発動した！（4回目）";
             enemy.Base.RaigekiCount = 0;

@@ -172,7 +172,7 @@ public class GameMaster : MonoBehaviour
             gameUI.ShowLifes(player.Life);
             enemy.EnemyLifeContlloer.lifeReflection(enemy);
             yield return new WaitForSeconds(1.2f);
-            if (enemy.Base.EnemyLife == 0)
+            if (enemy.Base.EnemyLife ==0)
             {
                 ShowResult();
                 yield break;
@@ -256,10 +256,6 @@ public class GameMaster : MonoBehaviour
             gameUI.show_text(enemy);
             yield return new WaitForSeconds(1.5f);
 
-            
-
-
-
             gameUI.MassagePanel.SetActive(false);
             SetupNextTurn();
 
@@ -282,8 +278,23 @@ public class GameMaster : MonoBehaviour
             yield break;
             
         }
-        gameUI.ShowLifes(player.Life);
-        yield return new WaitForSeconds(1.5f);
+        else if (enemy.Base.EnemyLife <= 0) //毒で倒した際にゲームが止まるようにする
+        {
+            yield break;
+        }
+
+        //毒状態表示UI
+        float waitTime = 0;
+        if (enemy.Base.IsPoison)
+        {
+            waitTime = 5f;
+        }
+        else
+        {
+            waitTime = 1.5f;
+        }
+            gameUI.ShowLifes(player.Life);
+        yield return new WaitForSeconds(waitTime); //元1.5f
 
         gameUI.MassagePanel.SetActive(false);
         SetupNextTurn();
@@ -292,10 +303,10 @@ public class GameMaster : MonoBehaviour
     //ゲームの結果を表示する
     public void ShowResult()
     {
-        if (player.Life == 0)
+        if (player.Life <= 0)
             gameUI.ShowGameResult("LOSE", TurnCount);
 
-        else if (enemy.Base.EnemyLife == 0)
+        else if (enemy.Base.EnemyLife <= 0)
             gameUI.ShowGameResult("WIN", TurnCount);
     }
 
