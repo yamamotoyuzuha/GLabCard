@@ -22,6 +22,7 @@ public class AnesthesiaEffect : UniqueEffect
         
     }
     //一枚前のカードの追加効果処理
+    /*
     public int FlontBuff(Card card, Card flontCard)
     {
         
@@ -44,7 +45,9 @@ public class AnesthesiaEffect : UniqueEffect
             attackValue *= foundBuff.buff;
             return (int)attackValue;
         }
+    
         
 
     }
+    */
 }

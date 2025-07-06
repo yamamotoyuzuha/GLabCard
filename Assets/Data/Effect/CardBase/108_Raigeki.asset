@@ -17,7 +17,7 @@ MonoBehaviour:
   synthesisType: 0
   type: 5
   id: 108
-  icon: {fileID: 21300000, guid: 4f24ee103faf9a449bf0c58954615b28, type: 3}
+  icon: {fileID: 21300000, guid: 7e20c4eec02e9e64aa3f5960df9e132b, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
   description: "\u96F7\u5C5E\u6027\u653B\u6483"
   cardStatus:
