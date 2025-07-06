@@ -22,6 +22,8 @@ public class BloodEffect : UniqueEffect
 
         enemy.Base.EnemyLife -= damage;
 
+        enemy.isSleepingBroken = true;
+
         Debug.Log(damage);
 
         //message.text = $"{damage}ダメージ与えた";

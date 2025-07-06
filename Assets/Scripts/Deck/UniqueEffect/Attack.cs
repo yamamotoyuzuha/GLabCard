@@ -12,20 +12,9 @@ public class AttackEffect : UniqueEffect
         int Hit = (int)(attackValue * Random.Range(0.8f, 1.2f));
         float defense = 1f - enemy.Base.EnemyDefense / 100f;
 
-        //代償カードのバフ計算　各カードのスクリプタブルオブジェクトのBuffに代償カードを追加すればOK
-        /*
-        int damage = 0;
-        if(card.Base.ComBuff != 0)
-        {
-            damage = (int)(Hit * defense) * (int)card.Base.ComBuff;
-        }
-        else
-        {
-            damage = (int)(Hit * defense);
-        }
-        */
         int damage = (int)(Hit * defense);
         enemy.Base.EnemyLife -= damage;
+        enemy.isSleepingBroken = true;
         message.text = $"{damage}ダメージ与えた";
         if (enemy.Base.EnemyLife < 0)
         {

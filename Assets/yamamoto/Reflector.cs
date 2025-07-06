@@ -23,14 +23,17 @@ public class Reflector : UniqueEffect
     {
         if (isReflector)
         {
-            enemyDamagae = Hit * 0.5f; //Enemyのダメージを半減
-            player.Life -= (int)enemyDamagae;
-            Debug.Log(enemyDamagae);
+            if (!enemy.isSleepActive) {
+                enemyDamagae = Hit * 0.5f; //Enemyのダメージを半減
+                player.Life -= (int)enemyDamagae;
+                Debug.Log(enemyDamagae);
 
-            //Enemyにダメージを与える処理
-            reflectorDamage = (int)enemyDamagae * 3;
-            enemy.Base.EnemyLife -= reflectorDamage;
-            Debug.Log(reflectorDamage);
+
+                //Enemyにダメージを与える処理
+                reflectorDamage = (int)enemyDamagae * 3;
+                enemy.Base.EnemyLife -= reflectorDamage;
+                Debug.Log(reflectorDamage);
+            }
 
             //reflector.isReflector = false;
             isReflector = false;

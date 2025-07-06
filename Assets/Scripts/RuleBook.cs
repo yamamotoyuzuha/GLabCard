@@ -122,38 +122,19 @@ public class RuleBook : MonoBehaviour
 
     //敵のターン処理
     public void EnemyAttack(Battler player, Enemy enemy)
-    {
+    {   
+
+
+        int Hit = (int)(enemy.Base.EnemyAttack * Random.Range(0.8f, 1.1f));
+        float Decrease = 1f - player.Defens / 100f;
 
 
         if (enemy.Base.IsRaigeki == true)
         {
-            message.text = $"行動不能";
+            message.text = $"しかし{enemy.Base.Name1}は痺れている！";
             
         }
-        else 
-        {
-            int Hit = (int)(enemy.Base.EnemyAttack * Random.Range(0.8f, 1.1f));
-            float Decrease = 1f - player.Defens / 100f;
-
-            if (enemy.Base.Count1 == 0)
-            {
-                Hit = 2 * Hit;
-            }
-            Hit = (int)(Hit * Decrease);
-
-            //リフレクターの処理
-            if (reflector.isReflector){
-                reflector.ReflectorAttack(player, enemy, message, Hit);
-                message.text = $"{(int)reflector.enemyDamagae}ダメージをうけ、{reflector.reflectorDamage}を反射で与えた";
-                return;
-            }
-
-            if (enemy.CheckSleep()) return;
-            
-            player.Life -= Hit;
-            message.text = $"{Hit}ダメージをうけた";
-        }
-        enemy.Base.IsRaigeki = false;
+        
         
         //毒ポーションの処理
         if(enemy.Base.IsPoison)
@@ -164,18 +145,38 @@ public class RuleBook : MonoBehaviour
             Debug.Log(enemy.Base.IsPoison);
             if (enemy.Base.PoisonTurn == 0)
             {
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
+                //message.text = $"{enemy.Base.Name1}は毒状態だ！";
+                enemy.Base.PoisonTurn++;
+                enemy.EnemyLifeContlloer.lifeReflection(enemy);//毒でHPが減った後のUI更新、HPバーと実際のHPが一致させるため
+                gameMaster.ShowResult();//勝利演出の追加(ないと次のターンに行ってしまう為)
+            }
+            else if (enemy.Base.PoisonTurn == 1)
+            {
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
+
+                if (enemy.Base.PoisonCount >= 2)
+                {
+                    Debug.Log(enemy.Base.EnemyLife);
+                    enemy.Base.EnemyLife -= (10 + adddamege);
+                    Debug.Log(enemy.Base.EnemyLife);
+                    enemy.Base.PoisonTurn++;
+                    enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                    gameMaster.ShowResult();
+                    return;
+                }
                 enemy.Base.EnemyLife -= 10;
                 enemy.Base.PoisonTurn++;
                 enemy.EnemyLifeContlloer.lifeReflection(enemy);
                 gameMaster.ShowResult();
             }
-            else if (enemy.Base.PoisonTurn == 1)
+            else if (enemy.Base.PoisonTurn == 2)
             {
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
+
                 if (enemy.Base.PoisonCount >= 2)
                 {
-                    Debug.Log(enemy.Base.EnemyLife);
                     enemy.Base.EnemyLife -= (15 + adddamege);
-                    Debug.Log(enemy.Base.EnemyLife);
                     enemy.Base.PoisonTurn++;
                     enemy.EnemyLifeContlloer.lifeReflection(enemy);
                     gameMaster.ShowResult();
@@ -186,14 +187,17 @@ public class RuleBook : MonoBehaviour
                 enemy.EnemyLifeContlloer.lifeReflection(enemy);
                 gameMaster.ShowResult();
             }
-            else if (enemy.Base.PoisonTurn == 2)
+            else if (enemy.Base.PoisonTurn == 3)
             {
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
+
                 if (enemy.Base.PoisonCount >= 2)
                 {
                     enemy.Base.EnemyLife -= (20 + adddamege);
                     enemy.Base.PoisonTurn++;
                     enemy.EnemyLifeContlloer.lifeReflection(enemy);
                     gameMaster.ShowResult();
+
                     return;
                 }
                 enemy.Base.EnemyLife -= 20;
@@ -201,8 +205,10 @@ public class RuleBook : MonoBehaviour
                 enemy.EnemyLifeContlloer.lifeReflection(enemy);
                 gameMaster.ShowResult();
             }
-            else if (enemy.Base.PoisonTurn == 3)
+            else if (enemy.Base.PoisonTurn == 4)
             {
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
+
                 if (enemy.Base.PoisonCount >= 2)
                 {
                     enemy.Base.EnemyLife -= (25 + adddamege);
@@ -217,9 +223,10 @@ public class RuleBook : MonoBehaviour
                 enemy.EnemyLifeContlloer.lifeReflection(enemy);
                 gameMaster.ShowResult();
             }
-            else if (enemy.Base.PoisonTurn == 4)
+            else if (enemy.Base.PoisonTurn == 5)
             {
-                
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
+
                 if (enemy.Base.PoisonCount >= 1)
                 {
                     enemy.Base.EnemyLife -= 30;
@@ -228,20 +235,42 @@ public class RuleBook : MonoBehaviour
                     gameMaster.ShowResult();
                     return;
                 }
-                enemy.Base.EnemyLife -= 30;
-                enemy.EnemyLifeContlloer.lifeReflection(enemy);
-                gameMaster.ShowResult();
+                enemy.Base.EnemyLife -= 30; 
                 enemy.Base.IsPoison = false;
                 enemy.Base.PoisonTurn = 0;
+                enemy.EnemyLifeContlloer.lifeReflection(enemy);
+                gameMaster.ShowResult();
             }
-            
-            
-            
 
-           
         }
-        
-       
+
+        //強攻撃の処理
+        if (enemy.Base.Count1 == 0)
+        {
+            Hit = 2 * Hit;
+        }
+        Hit = (int)(Hit * Decrease);
+
+        //リフレクターの処理
+        if (reflector.isReflector)
+        {
+            reflector.ReflectorAttack(player, enemy, message, Hit);
+            message.text = $"{(int)reflector.enemyDamagae}ダメージをうけ、{reflector.reflectorDamage}を反射で与えた";
+            return;
+        }
+
+
+        //雷撃の処理
+        if (enemy.Base.IsRaigeki == false　&& enemy.Base.IsPoison == false)
+        {
+            player.Life -= Hit;
+            
+        }
+        else if(enemy.Base.IsRaigeki == true)
+        {   
+            Debug.Log("雷撃発動");
+            enemy.Base.IsRaigeki = false;
+        }
 
     }
 
@@ -274,8 +303,14 @@ public class RuleBook : MonoBehaviour
         message.text = "";
     }
 
-   
+    IEnumerator UIText(Enemy enemy, int Hit, string text)
+    {
+        message.text = $"{enemy.Base.Name1}" + text;
 
+        yield return new WaitForSeconds(2f);
+
+        message.text = $"{Hit}ダメージ！";
+    }
 
 }
 

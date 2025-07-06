@@ -26,8 +26,8 @@ public class Enemy : MonoBehaviour
     public UnityAction<Card> OnClickCard;
     private List<float> sleepRates = new List<float>();
     private int sleepTurn = 0;
-    private bool isSleepActive = false;
-    private bool isSleepingBroken = false;
+    public bool isSleepActive = false;
+    public bool isSleepingBroken = false;
     private int maxSleepTurns = 0;
     //カード内容の定義
     public void SetEnemy(EnemyBase enemyBase)
@@ -74,6 +74,7 @@ public class Enemy : MonoBehaviour
         }
         float chance = sleepRates[sleepTurn];
         float randomValue = Random.value;
+        Debug.Log(randomValue +"aaa"+chance);
         //Debug.Log($"[Sleep判定] Turn:{sleepTurn}, 確率:{chance}, 値:{randomValue}");
 
         sleepTurn++;
