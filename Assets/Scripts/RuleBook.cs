@@ -153,6 +153,8 @@ public class RuleBook : MonoBehaviour
             }
             else if (enemy.Base.PoisonTurn == 1)
             {
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
+
                 if (enemy.Base.PoisonCount >= 2)
                 {
                     Debug.Log(enemy.Base.EnemyLife);
@@ -170,6 +172,8 @@ public class RuleBook : MonoBehaviour
             }
             else if (enemy.Base.PoisonTurn == 2)
             {
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
+
                 if (enemy.Base.PoisonCount >= 2)
                 {
                     enemy.Base.EnemyLife -= (15 + adddamege);
@@ -185,6 +189,8 @@ public class RuleBook : MonoBehaviour
             }
             else if (enemy.Base.PoisonTurn == 3)
             {
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
+
                 if (enemy.Base.PoisonCount >= 2)
                 {
                     enemy.Base.EnemyLife -= (20 + adddamege);
@@ -201,6 +207,7 @@ public class RuleBook : MonoBehaviour
             }
             else if (enemy.Base.PoisonTurn == 4)
             {
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
 
                 if (enemy.Base.PoisonCount >= 2)
                 {
@@ -218,6 +225,7 @@ public class RuleBook : MonoBehaviour
             }
             else if (enemy.Base.PoisonTurn == 5)
             {
+                StartCoroutine(UIText(enemy, Hit, "は毒状態だ！"));
 
                 if (enemy.Base.PoisonCount >= 1)
                 {
@@ -256,11 +264,9 @@ public class RuleBook : MonoBehaviour
         if (enemy.Base.IsRaigeki == false　&& enemy.Base.IsPoison == false)
         {
             player.Life -= Hit;
-            //message.text = $"{Hit}ダメージ！";
-            StartCoroutine(UIText(enemy, Hit, "に雷撃は発動しなかった"));
-            Debug.Log("雷撃が未発動の処理");
+            
         }
-        else
+        else if(enemy.Base.IsRaigeki == true)
         {   
             Debug.Log("雷撃発動");
             enemy.Base.IsRaigeki = false;
