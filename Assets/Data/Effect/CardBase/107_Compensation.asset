@@ -17,7 +17,7 @@ MonoBehaviour:
   synthesisType: 0
   type: 0
   id: 107
-  icon: {fileID: 21300000, guid: 36bdbba0a33233b4aac24dae5a05941b, type: 3}
+  icon: {fileID: 21300000, guid: 03c19854af502264bb469d7897dd5be2, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
   description: "HP\u3092\u4EE3\u511F\u306B\u653B\u6483"
   cardStatus:
