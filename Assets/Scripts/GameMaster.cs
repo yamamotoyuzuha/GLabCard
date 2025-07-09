@@ -33,25 +33,57 @@ public class GameMaster : MonoBehaviour
   
     int TurnCount;
 
+    //MusicControllerの宣言
+    //BGMなどを流すために使用
+    public MusicController musicController;
+
+
+
     // public void Rese(Enemy enemy)
     // {
     //    enemy.Base.PoisonStatus = 0;
     // }
     private void Start()
     {
+
+
+        
         gameUI.UISetUp();
         deck.DeckDefault();
 
+        musicController.StageSelectBGM();
 
 
     }
-
+    
     //モンスターをセレクトした後のセットアップ
     public void Serect()
     {
         serectPanel.SetActive(false);
+
         Setup();
+
+        //一度だけバトルスタートBGMを流す
+        //switchでケース別にしてあるので万が一敵が増えたらケースに追加してください
+        //musicController.側でバトルのBGMのループもするようになっています
+        switch(enemy.Base.Type)
+        {
+            case EnemyType.Slime:
+            case EnemyType.Golem:
+                musicController.NomalBattleStartBGM();
+                break;
+
+            case EnemyType.Dragon:
+                musicController.DragonBattleStartBGM();
+                break;
+
+        }
+            
+        
+        
+
     }
+
     //ゲームスタート時のセットアップ内容
     public void Setup()
     {
@@ -68,7 +100,7 @@ public class GameMaster : MonoBehaviour
         deck.DeckListOpen();
         deck.DeckSet();
         SendCardTo(player);
-        
+
 
         TurnSetup();
     }
@@ -307,6 +339,8 @@ public class GameMaster : MonoBehaviour
             gameUI.ShowGameResult("LOSE", TurnCount);
 
         else if (enemy.Base.EnemyLife <= 0)
+            musicController.StopBGM();//念のため曲の停止を入れておく
+            musicController.VictoryBGM();//勝利BGMの再生
             gameUI.ShowGameResult("WIN", TurnCount);
     }
 
