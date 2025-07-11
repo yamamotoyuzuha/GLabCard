@@ -7,7 +7,7 @@ public class TitleManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public MusicController musicController;
+    public Sounds musicController;
 
   
 

@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Windows;
 
-public class MusicController : MonoBehaviour
+public class Sounds : MonoBehaviour
    
 {
     //メモ必要BGM
@@ -23,13 +23,10 @@ public class MusicController : MonoBehaviour
 
     public AudioClip victoryBGM;
 
+    [SerializeField]
     private AudioSource audioSource;
 
-    void Awake()
-    {
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.loop = true;
-    }
+    
 
     //タイトルBGMの再生
     public void PlayTitleBGM()
@@ -65,6 +62,7 @@ public class MusicController : MonoBehaviour
     //ドラゴン戦のスタート音の再生
     public void DragonBattleStartBGM()
     {
+        audioSource.loop = false;
         audioSource.clip = dragon_battle_startBGM;
         audioSource.volume = 0.7f;
         audioSource.Play();

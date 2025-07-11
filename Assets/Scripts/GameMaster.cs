@@ -35,7 +35,7 @@ public class GameMaster : MonoBehaviour
 
     //MusicControllerの宣言
     //BGMなどを流すために使用
-    public MusicController musicController;
+    public Sounds musicController;
 
 
 
@@ -335,13 +335,19 @@ public class GameMaster : MonoBehaviour
     //ゲームの結果を表示する
     public void ShowResult()
     {
-        if (player.Life <= 0)
+        if (player.Life <= 0) {
             gameUI.ShowGameResult("LOSE", TurnCount);
+        }
 
-        else if (enemy.Base.EnemyLife <= 0)
+        else if (enemy.Base.EnemyLife <= 0) 
+        {
+            //Debug.Log(enemy.Base.EnemyLife);
+
             musicController.StopBGM();//念のため曲の停止を入れておく
             musicController.VictoryBGM();//勝利BGMの再生
             gameUI.ShowGameResult("WIN", TurnCount);
+        }
+        
     }
 
     //次ターンに向けてのリセットと準備
