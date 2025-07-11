@@ -261,7 +261,7 @@ public class RuleBook : MonoBehaviour
 
 
         //雷撃の処理
-        if (enemy.Base.IsRaigeki == false　&& enemy.Base.IsPoison == false)
+        if (enemy.Base.IsRaigeki == false)
         {
             player.Life -= Hit;
             
