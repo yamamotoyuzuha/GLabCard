@@ -82,6 +82,7 @@ public class Enemy : MonoBehaviour
         if (randomValue < chance)
         {
             Debug.Log("敵は眠っている！");
+            isSleepActive = true;
             return true;
         }
         else
