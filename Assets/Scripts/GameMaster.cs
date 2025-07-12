@@ -288,6 +288,13 @@ public class GameMaster : MonoBehaviour
             gameUI.show_text(enemy);
             yield return new WaitForSeconds(1.5f);
 
+            //追加
+            if (enemy.Base.IsPoison)
+            {
+                ruleBook.EnemyAttack(player, enemy);
+                yield return new WaitForSeconds(3.5f);
+            }
+
             gameUI.MassagePanel.SetActive(false);
             SetupNextTurn();
 
@@ -325,7 +332,7 @@ public class GameMaster : MonoBehaviour
         {
             waitTime = 1.5f;
         }
-            gameUI.ShowLifes(player.Life);
+        gameUI.ShowLifes(player.Life);
         yield return new WaitForSeconds(waitTime); //元1.5f
 
         gameUI.MassagePanel.SetActive(false);

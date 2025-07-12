@@ -261,10 +261,12 @@ public class RuleBook : MonoBehaviour
 
 
         //雷撃の処理
-        if (enemy.Base.IsRaigeki == false)
+        if (enemy.Base.IsRaigeki == false && !enemy.isSleepActive)
         {
             player.Life -= Hit;
-            
+            message.text = $"{Hit}ダメージを受けた！";
+
+            Debug.Log("エネミーの攻撃");
         }
         else if(enemy.Base.IsRaigeki == true)
         {   
@@ -309,9 +311,31 @@ public class RuleBook : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        message.text = $"{Hit}ダメージ！";
+        if (enemy.isSleepActive)
+        {
+            if (enemy.Base.PoisonTurn == 1)
+            {
+                message.text = $"{enemy.Base.Name1}に次のターンから\n毒の持続ダメージが入るぞ！！！";
+            }
+            else
+            {
+                message.text = $"{enemy.Base.Name1}に毒の持続ダメージを与えた";
+                Debug.Log("毒の持続ダメージを与える");
+            }
+        }
+        else
+        {
+            if(enemy.Base.PoisonTurn == 1)
+            {
+                message.text = $"{enemy.Base.Name1}に次のターンから\n毒の持続ダメージが入るぞ！！！";
+            }
+            else
+            {
+                message.text = $"{enemy.Base.Name1}に毒の持続ダメージを与えた";
+                Debug.Log("毒の持続ダメージを与える");
+            }
+        }
     }
-
 }
 
 
