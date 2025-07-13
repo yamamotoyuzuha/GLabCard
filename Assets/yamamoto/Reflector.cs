@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using UnityEditor.VersionControl;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "UniqueEffects/Reflector")]
